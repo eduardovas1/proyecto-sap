@@ -1,0 +1,1688 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model TXCAP0001 {
+  XCNUMPER  String    @id @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCMOVPER  String    @db.VarChar(2)
+  XCMOTMOV  String?   @db.VarChar(2)
+  XCSUBMOT  String?   @db.VarChar(2)
+  XCESTADO  String?   @db.VarChar(1)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+}
+
+model TXCAP0001_M {
+  id_movimiento BigInt                 @id @default(autoincrement())
+  XCNUMPER      String                 @db.VarChar(10)
+  XCFECINI      DateTime?              @db.Date
+  XCFECFIN      DateTime?              @db.Date
+  XCMOVPER      String?                @db.VarChar(2)
+  XCMOTMOV      String?                @db.VarChar(2)
+  XCSUBMOT      String?                @db.VarChar(2)
+  XCESTADO      String?                @db.VarChar(1)
+  XCFECUSER     DateTime?              @db.DateTime(0)
+  XCUSER        String?                @db.VarChar(15)
+  XCTIPOREG     TXCAP0001_M_XCTIPOREG?
+  XCFECEVENTO   DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_XCNUMPER")
+}
+
+model TXCAP0002 {
+  XCNUMPER   String    @id @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCCECO     String?   @db.VarChar(20)
+  XCEMPRESA  String?   @db.VarChar(6)
+  XCDIV01    String?   @db.VarChar(6)
+  XCDIV02    String?   @db.VarChar(6)
+  XCDIV03    String?   @db.VarChar(6)
+  XCGRPER    String?   @db.VarChar(2)
+  XCARPER    String?   @db.VarChar(4)
+  XCSARPER   String?   @db.VarChar(4)
+  XCGRNOM    String?   @db.VarChar(4)
+  XCPOSICION String?   @db.VarChar(10)
+  XCFUNCION  String?   @db.VarChar(10)
+  XCARORGA   String?   @db.VarChar(10)
+  XCENCAR01  String?   @db.VarChar(4)
+  XCENCAR02  String?   @db.VarChar(4)
+  XCENCAR03  String?   @db.VarChar(4)
+  XCENCAR04  String?   @db.VarChar(4)
+  XCCONDI    String?   @db.VarChar(2)
+  XCSITUA    String?   @db.VarChar(2)
+  XCRELLAB   String?   @db.VarChar(2)
+  XCTIPORIA  String?   @db.VarChar(2)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+}
+
+model TXCAP0002_M {
+  id_org      BigInt                 @id @default(autoincrement())
+  XCNUMPER    String                 @db.VarChar(10)
+  XCFECINI    DateTime               @db.Date
+  XCFECFIN    DateTime               @db.Date
+  XCCECO      String?                @db.VarChar(20)
+  XCEMPRESA   String?                @db.VarChar(6)
+  XCDIV01     String?                @db.VarChar(6)
+  XCDIV02     String?                @db.VarChar(6)
+  XCDIV03     String?                @db.VarChar(6)
+  XCGRPER     String?                @db.VarChar(2)
+  XCARPER     String?                @db.VarChar(4)
+  XCSARPER    String?                @db.VarChar(4)
+  XCGRNOM     String?                @db.VarChar(4)
+  XCPOSICION  String?                @db.VarChar(10)
+  XCFUNCION   String?                @db.VarChar(10)
+  XCARORGA    String?                @db.VarChar(10)
+  XCENCAR01   String?                @db.VarChar(4)
+  XCENCAR02   String?                @db.VarChar(4)
+  XCENCAR03   String?                @db.VarChar(4)
+  XCENCAR04   String?                @db.VarChar(4)
+  XCCONDI     String?                @db.VarChar(2)
+  XCSITUA     String?                @db.VarChar(2)
+  XCRELLAB    String?                @db.VarChar(2)
+  XCTIPORIA   String?                @db.VarChar(2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0002_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_org_numper")
+}
+
+model TXCAP0003 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCTIPFEC01 String?   @db.VarChar(10)
+  XCFEC01    DateTime? @db.Date
+  XCTIPFEC02 String?   @db.VarChar(10)
+  XCFEC02    DateTime? @db.Date
+  XCTIPFEC03 String?   @db.VarChar(10)
+  XCFEC03    DateTime? @db.Date
+  XCTIPFEC04 String?   @db.VarChar(10)
+  XCFEC04    DateTime? @db.Date
+  XCTIPFEC05 String?   @db.VarChar(10)
+  XCFEC05    DateTime? @db.Date
+  XCTIPFEC06 String?   @db.VarChar(10)
+  XCFEC06    DateTime? @db.Date
+  XCTIPFEC07 String?   @db.VarChar(10)
+  XCFEC07    DateTime? @db.Date
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0003_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String                 @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCTIPFEC01  String?                @db.VarChar(10)
+  XCFEC01     DateTime?              @db.Date
+  XCTIPFEC02  String?                @db.VarChar(10)
+  XCFEC02     DateTime?              @db.Date
+  XCTIPFEC03  String?                @db.VarChar(10)
+  XCFEC03     DateTime?              @db.Date
+  XCTIPFEC04  String?                @db.VarChar(10)
+  XCFEC04     DateTime?              @db.Date
+  XCTIPFEC05  String?                @db.VarChar(10)
+  XCFEC05     DateTime?              @db.Date
+  XCTIPFEC06  String?                @db.VarChar(10)
+  XCFEC06     DateTime?              @db.Date
+  XCTIPFEC07  String?                @db.VarChar(10)
+  XCFEC07     DateTime?              @db.Date
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0003_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0004 {
+  XCNUMPER    String    @db.VarChar(10)
+  XCFECINI    DateTime  @db.Date
+  XCFECFIN    DateTime  @db.Date
+  XCTRAMNTO   String?   @db.VarChar(2)
+  XCAPPATERNO String?   @db.VarChar(60)
+  XCAPMATERNO String?   @db.VarChar(60)
+  XCPRIMNOM   String?   @db.VarChar(60)
+  XCSEGNOM    String?   @db.VarChar(60)
+  XCTERNOM    String?   @db.VarChar(60)
+  XCNOMCOMPL  String?   @db.VarChar(300)
+  XCNOMCOMPL2 String?   @db.VarChar(300)
+  XCSEXO      String?   @db.VarChar(1)
+  XCESTCIV    String?   @db.VarChar(1)
+  XCNACIO     String?   @db.VarChar(3)
+  XCSEGNAC    String?   @db.VarChar(3)
+  XCRELIG     String?   @db.VarChar(2)
+  XCFECNAC    DateTime? @db.Date
+  XCIDIOM     String?   @db.VarChar(3)
+  XCRESFAMI   String?   @db.VarChar(2)
+  XCCONIMP    String?   @db.VarChar(2)
+  XCFECUSER   DateTime? @db.DateTime(0)
+  XCUSER      String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0004_M {
+  ID_EVENTO    BigInt                 @id @default(autoincrement())
+  XCNUMPER     String?                @db.VarChar(10)
+  XCFECINI     DateTime?              @db.Date
+  XCFECFIN     DateTime?              @db.Date
+  XCTRAMNTO    String?                @db.VarChar(2)
+  XCAPPATERNO  String?                @db.VarChar(60)
+  XCAPMATERNO  String?                @db.VarChar(60)
+  XCPRIMNOM    String?                @db.VarChar(60)
+  XCSEGNOM     String?                @db.VarChar(60)
+  XCTERNOM     String?                @db.VarChar(60)
+  XCNOMCOMPL   String?                @db.VarChar(300)
+  XCNOMCOMPL2  String?                @db.VarChar(300)
+  XCSEXO       String?                @db.VarChar(1)
+  XCESTCIV     String?                @db.VarChar(1)
+  XCNACIO      String?                @db.VarChar(3)
+  XCSEGNAC     String?                @db.VarChar(3)
+  XCRELIG      String?                @db.VarChar(2)
+  XCFECNAC     DateTime?              @db.Date
+  XCIDIOM      String?                @db.VarChar(3)
+  XCRESFAMI    String?                @db.VarChar(2)
+  XCCONIMP     String?                @db.VarChar(2)
+  XCFECUSER    DateTime?              @db.DateTime(0)
+  XCUSER       String?                @db.VarChar(15)
+  XCTIPOREG    TXCAP0004_M_XCTIPOREG?
+  FECHA_EVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0005 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime? @db.Date
+  XCCLASEDIR String?   @db.VarChar(4)
+  XCDIRCO    String?   @db.VarChar(200)
+  XCREFER    String?   @db.VarChar(200)
+  XCCODPOSTA String?   @db.VarChar(15)
+  XCPAIS     String?   @db.VarChar(3)
+  XCTIPO     String?   @db.VarChar(2)
+  XCZONA     String?   @db.VarChar(2)
+  XCNZONA    String?   @db.VarChar(20)
+  XCDEPNRO   String?   @db.VarChar(4)
+  XCMANZA    String?   @db.VarChar(4)
+  XCLOTE     String?   @db.VarChar(4)
+  XCKILOM    String?   @db.VarChar(4)
+  XCBLOQU    String?   @db.VarChar(4)
+  XCETAPA    String?   @db.VarChar(4)
+  XCINTER    String?   @db.VarChar(4)
+  XCDEPART   String?   @db.VarChar(2)
+  XCPROVI    String?   @db.VarChar(2)
+  XCDISTR    String?   @db.VarChar(2)
+  XCUBIGE    String?   @db.VarChar(6)
+  XCCODIG    String?   @db.VarChar(3)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0005_M {
+  id_evento   BigInt                @id @default(autoincrement())
+  XCNUMPER    String                @db.VarChar(10)
+  XCFECINI    DateTime              @db.Date
+  XCFECFIN    DateTime?             @db.Date
+  XCCLASEDIR  String?               @db.VarChar(4)
+  XCDIRCO     String?               @db.VarChar(200)
+  XCREFER     String?               @db.VarChar(200)
+  XCCODPOSTA  String?               @db.VarChar(15)
+  XCPAIS      String?               @db.VarChar(3)
+  XCTIPO      String?               @db.VarChar(2)
+  XCZONA      String?               @db.VarChar(2)
+  XCNZONA     String?               @db.VarChar(20)
+  XCDEPNRO    String?               @db.VarChar(4)
+  XCMANZA     String?               @db.VarChar(4)
+  XCLOTE      String?               @db.VarChar(4)
+  XCKILOM     String?               @db.VarChar(4)
+  XCBLOQU     String?               @db.VarChar(4)
+  XCETAPA     String?               @db.VarChar(4)
+  XCINTER     String?               @db.VarChar(4)
+  XCDEPART    String?               @db.VarChar(2)
+  XCPROVI     String?               @db.VarChar(2)
+  XCDISTR     String?               @db.VarChar(2)
+  XCUBIGE     String?               @db.VarChar(6)
+  XCCODIG     String?               @db.VarChar(3)
+  XCFECUSER   DateTime?             @db.DateTime(0)
+  XCUSER      String?               @db.VarChar(15)
+  XCTIPOREG   TXCAP0005_M_XCTIPOREG
+  XCFECEVENTO DateTime?             @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0006 {
+  XCNUMPER    String    @db.VarChar(10)
+  XCFECINI    DateTime  @db.Date
+  XCFECFIN    DateTime  @db.Date
+  XCCLASEBAN  String?   @db.VarChar(4)
+  XCPAIS      String?   @db.VarChar(3)
+  XCBANCO     String?   @db.VarChar(6)
+  XCNUMCTA    String?   @db.VarChar(20)
+  XCNUMCTAINT String?   @db.VarChar(20)
+  XCTIPOCTA   String?   @db.VarChar(2)
+  XCVIAPAGO   String?   @db.VarChar(2)
+  XCMONEDA    String?   @db.VarChar(3)
+  XCFECUSER   DateTime? @db.DateTime(0)
+  XCUSER      String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0006_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLASEBAN  String?                @db.VarChar(4)
+  XCPAIS      String?                @db.VarChar(3)
+  XCBANCO     String?                @db.VarChar(6)
+  XCNUMCTA    String?                @db.VarChar(20)
+  XCNUMCTAINT String?                @db.VarChar(20)
+  XCTIPOCTA   String?                @db.VarChar(2)
+  XCVIAPAGO   String?                @db.VarChar(2)
+  XCMONEDA    String?                @db.VarChar(3)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0006_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0007 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCHORPER  String?   @db.VarChar(15)
+  XCTIPFISC String?   @db.VarChar(2)
+  XCHORYEAR Decimal?  @db.Decimal(6, 2)
+  XCHORMES  Decimal?  @db.Decimal(6, 2)
+  XCHORDIA  Decimal?  @db.Decimal(6, 2)
+  XCTPOPAR  String?   @db.VarChar(1)
+  XCINDTPO  String?   @db.VarChar(1)
+  XCDIASMES Decimal?  @db.Decimal(6, 2)
+  XCDIASSEM Decimal?  @db.Decimal(6, 2)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0007_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCHORPER    String?                @db.VarChar(15)
+  XCTIPFISC   String?                @db.VarChar(2)
+  XCHORYEAR   Decimal?               @db.Decimal(6, 2)
+  XCHORMES    Decimal?               @db.Decimal(6, 2)
+  XCHORDIA    Decimal?               @db.Decimal(6, 2)
+  XCTPOPAR    String?                @db.VarChar(1)
+  XCINDTPO    String?                @db.VarChar(1)
+  XCDIASMES   Decimal?               @db.Decimal(6, 2)
+  XCDIASSEM   Decimal?               @db.Decimal(6, 2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0007_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+}
+
+model TXCAP0008 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCMOTIVS   String?   @db.VarChar(2)
+  XCCONVE    String?   @db.VarChar(2)
+  XCSUBCON   String?   @db.VarChar(2)
+  XCCLCON    String?   @db.VarChar(2)
+  XCGRUPO    String?   @db.VarChar(10)
+  XCSUBGR    String?   @db.VarChar(4)
+  XCGROCUP   Decimal?  @db.Decimal(6, 2)
+  XCHRTRAB   Decimal?  @db.Decimal(6, 2)
+  XCREMANU   Decimal?  @db.Decimal(10, 2)
+  XCCON01    String?   @db.VarChar(4)
+  XCIMP01    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA01 String?   @db.VarChar(3)
+  XCCON02    String?   @db.VarChar(4)
+  XCIMP02    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA02 String?   @db.VarChar(3)
+  XCCON03    String?   @db.VarChar(4)
+  XCIMP03    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA03 String?   @db.VarChar(3)
+  XCCON04    String?   @db.VarChar(4)
+  XCIMP04    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA04 String?   @db.VarChar(3)
+  XCCON05    String?   @db.VarChar(4)
+  XCIMP05    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA05 String?   @db.VarChar(3)
+  XCCON06    String?   @db.VarChar(4)
+  XCIMP06    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA06 String?   @db.VarChar(3)
+  XCCON07    String?   @db.VarChar(4)
+  XCIMP07    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA07 String?   @db.VarChar(3)
+  XCCON08    String?   @db.VarChar(4)
+  XCIMP08    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA08 String?   @db.VarChar(3)
+  XCCON09    String?   @db.VarChar(4)
+  XCIMP09    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA09 String?   @db.VarChar(3)
+  XCCON10    String?   @db.VarChar(4)
+  XCIMP10    Decimal?  @db.Decimal(10, 2)
+  XCMONEDA10 String?   @db.VarChar(3)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0008_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCMOTIVS    String?                @db.VarChar(2)
+  XCCONVE     String?                @db.VarChar(2)
+  XCSUBCON    String?                @db.VarChar(2)
+  XCCLCON     String?                @db.VarChar(2)
+  XCGRUPO     String?                @db.VarChar(10)
+  XCSUBGR     String?                @db.VarChar(4)
+  XCGROCUP    Decimal?               @db.Decimal(6, 2)
+  XCHRTRAB    Decimal?               @db.Decimal(6, 2)
+  XCREMANU    Decimal?               @db.Decimal(10, 2)
+  XCCON01     String?                @db.VarChar(4)
+  XCIMP01     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA01  String?                @db.VarChar(3)
+  XCCON02     String?                @db.VarChar(4)
+  XCIMP02     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA02  String?                @db.VarChar(3)
+  XCCON03     String?                @db.VarChar(4)
+  XCIMP03     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA03  String?                @db.VarChar(3)
+  XCCON04     String?                @db.VarChar(4)
+  XCIMP04     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA04  String?                @db.VarChar(3)
+  XCCON05     String?                @db.VarChar(4)
+  XCIMP05     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA05  String?                @db.VarChar(3)
+  XCCON06     String?                @db.VarChar(4)
+  XCIMP06     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA06  String?                @db.VarChar(3)
+  XCCON07     String?                @db.VarChar(4)
+  XCIMP07     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA07  String?                @db.VarChar(3)
+  XCCON08     String?                @db.VarChar(4)
+  XCIMP08     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA08  String?                @db.VarChar(3)
+  XCCON09     String?                @db.VarChar(4)
+  XCIMP09     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA09  String?                @db.VarChar(3)
+  XCCON10     String?                @db.VarChar(4)
+  XCIMP10     Decimal?               @db.Decimal(10, 2)
+  XCMONEDA10  String?                @db.VarChar(3)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0008_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0009 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCCLASE   String?   @db.VarChar(4)
+  XCIMPOR   Decimal?  @db.Decimal(10, 2)
+  XCMONED   String?   @db.VarChar(3)
+  XCCANTI   Decimal?  @db.Decimal(6, 2)
+  XCUNIDA   String?   @db.VarChar(10)
+  XCMOTIV   String?   @db.VarChar(2)
+  XCTEXL    String?   @db.VarChar(40)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0009_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLASE     String?                @db.VarChar(4)
+  XCIMPOR     Decimal?               @db.Decimal(10, 2)
+  XCMONED     String?                @db.VarChar(3)
+  XCCANTI     Decimal?               @db.Decimal(6, 2)
+  XCUNIDA     String?                @db.VarChar(10)
+  XCMOTIV     String?                @db.VarChar(2)
+  XCTEXL      String?                @db.VarChar(40)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0009_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0010 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCCLASE   String?   @db.VarChar(4)
+  XCIMPOR   Decimal?  @db.Decimal(10, 2)
+  XCMONED   String?   @db.VarChar(3)
+  XCCANTI   Decimal?  @db.Decimal(6, 2)
+  XCUNIDA   String?   @db.VarChar(10)
+  XCMOTIV   String?   @db.VarChar(2)
+  XCTEXL    String?   @db.VarChar(40)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0010_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLASE     String?                @db.VarChar(4)
+  XCIMPOR     Decimal?               @db.Decimal(10, 2)
+  XCMONED     String?                @db.VarChar(3)
+  XCCANTI     Decimal?               @db.Decimal(6, 2)
+  XCUNIDA     String?                @db.VarChar(10)
+  XCMOTIV     String?                @db.VarChar(2)
+  XCTEXL      String?                @db.VarChar(40)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0010_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0011 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCPAIS    String?   @db.VarChar(3)
+  XCFORMA   String?   @db.VarChar(12)
+  XCCLASE   String?   @db.VarChar(2)
+  XCTITUL   String?   @db.VarChar(100)
+  XCINSTI   String?   @db.VarChar(4)
+  XCA_OTER  String?   @map("XCAÑOTER") @db.VarChar(4)
+  XCESPEC   String?   @db.VarChar(12)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0011_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCPAIS      String?                @db.VarChar(3)
+  XCFORMA     String?                @db.VarChar(12)
+  XCCLASE     String?                @db.VarChar(2)
+  XCTITUL     String?                @db.VarChar(100)
+  XCINSTI     String?                @db.VarChar(4)
+  XCIDFORM    String?                @db.VarChar(10)
+  XCA_OTER    String?                @map("XCAÑOTER") @db.VarChar(4)
+  XCESPEC     String?                @db.VarChar(12)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0011_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0012 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCCLASEDOC String    @db.VarChar(2)
+  XCNUMDOCUM String    @db.VarChar(30)
+  XCPAIS     String?   @db.VarChar(3)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0012_M {
+  ID_EVENTO   BigInt                @id @default(autoincrement())
+  XCNUMPER    String                @db.VarChar(10)
+  XCFECINI    DateTime              @db.Date
+  XCFECFIN    DateTime              @db.Date
+  XCCLASEDOC  String                @db.VarChar(2)
+  XCNUMDOCUM  String                @db.VarChar(30)
+  XCPAIS      String?               @db.VarChar(3)
+  XCFECUSER   DateTime?             @db.DateTime(0)
+  XCUSER      String?               @db.VarChar(15)
+  XCTIPOREG   TXCAP0012_M_XCTIPOREG
+  XCFECEVENTO DateTime?             @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0013 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCCLACOM  String?   @db.VarChar(2)
+  XCCOMUN   String?   @db.VarChar(100)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0013_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLACOM    String?                @db.VarChar(2)
+  XCCOMUN     String?                @db.VarChar(100)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0013_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_numper")
+}
+
+model TXCAP0014 {
+  XCNUMPER       String    @db.VarChar(10)
+  XCFECINI       DateTime  @db.Date
+  XCFECFIN       DateTime  @db.Date
+  XCCLCONTRA     String?   @db.VarChar(2)
+  XCFECFINCONTRA DateTime? @db.Date
+  XCPERIO        String?   @db.VarChar(2)
+  XCCODCONTR     String?   @db.VarChar(10)
+  XCFECMINTRA    DateTime? @db.Date
+  XCFINP         String?   @db.VarChar(1)
+  XCFECUSER      DateTime? @db.DateTime(0)
+  XCUSER         String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0014_M {
+  ID_EVENTO      BigInt                 @id @default(autoincrement())
+  XCNUMPER       String?                @db.VarChar(10)
+  XCFECINI       DateTime?              @db.Date
+  XCFECFIN       DateTime?              @db.Date
+  XCCLCONTRA     String?                @db.VarChar(2)
+  XCFECFINCONTRA DateTime?              @db.Date
+  XCPERIO        String?                @db.VarChar(2)
+  XCCODCONTR     String?                @db.VarChar(10)
+  XCFECMINTRA    DateTime?              @db.Date
+  XCFINP         String?                @db.VarChar(1)
+  XCFECUSER      DateTime?              @db.DateTime(0)
+  XCUSER         String?                @db.VarChar(15)
+  XCTIPOREG      TXCAP0014_M_XCTIPOREG?
+  XCFECEVENTO    DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0015 {
+  XCNUMPER      String    @db.VarChar(10)
+  XCFECINI      DateTime  @db.Date
+  XCFECFIN      DateTime  @db.Date
+  XCCLAPRESTA   String?   @db.VarChar(2)
+  XCCORRE       String?   @db.VarChar(10)
+  XCREFER       String?   @db.VarChar(50)
+  XCFECAUT      DateTime? @db.Date
+  XCIMPPRES     Decimal?  @db.Decimal(15, 2)
+  XCMONED       String?   @db.VarChar(3)
+  XCIMPPAG      Decimal?  @db.Decimal(15, 2)
+  XCSALPRES     Decimal?  @db.Decimal(15, 2)
+  XCFINPRES     DateTime? @db.Date
+  XCCONPRES     String?   @db.VarChar(2)
+  XCINTPRES     Decimal?  @db.Decimal(5, 2)
+  XCFECINIAMORT DateTime? @db.Date
+  XCCUOTAPRES   Decimal?  @db.Decimal(15, 2)
+  XCFECPRES01   DateTime? @db.Date
+  XCCLPRES01    String?   @db.VarChar(2)
+  XCIMPPRES01   Decimal?  @db.Decimal(15, 2)
+  XCFECPRES02   DateTime? @db.Date
+  XCCLPRES02    String?   @db.VarChar(2)
+  XCIMPPRES02   Decimal?  @db.Decimal(15, 2)
+  XCFECPRES03   DateTime? @db.Date
+  XCCLPRES03    String?   @db.VarChar(2)
+  XCIMPPRES03   Decimal?  @db.Decimal(15, 2)
+  XCFECPRES04   DateTime? @db.Date
+  XCCLPRES04    String?   @db.VarChar(2)
+  XCIMPPRES04   Decimal?  @db.Decimal(15, 2)
+  XCFECPRES05   DateTime? @db.Date
+  XCCLPRES05    String?   @db.VarChar(2)
+  XCIMPPRES05   Decimal?  @db.Decimal(15, 2)
+  XCFECPRES06   DateTime? @db.Date
+  XCCLPRES06    String?   @db.VarChar(2)
+  XCIMPPRES06   Decimal?  @db.Decimal(15, 2)
+  XCFECPRES07   DateTime? @db.Date
+  XCCLPRES07    String?   @db.VarChar(2)
+  XCIMPPRES07   Decimal?  @db.Decimal(15, 2)
+  XCFECUSER     DateTime? @db.DateTime(0)
+  XCUSER        String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0015_M {
+  ID_EVENTO     BigInt                 @id @default(autoincrement())
+  XCNUMPER      String?                @db.VarChar(10)
+  XCFECINI      DateTime?              @db.Date
+  XCFECFIN      DateTime?              @db.Date
+  XCCLAPRESTA   String?                @db.VarChar(2)
+  XCCORRE       String?                @db.VarChar(10)
+  XCREFER       String?                @db.VarChar(50)
+  XCFECAUT      DateTime?              @db.Date
+  XCIMPPRES     Decimal?               @db.Decimal(15, 2)
+  XCMONED       String?                @db.VarChar(3)
+  XCIMPPAG      Decimal?               @db.Decimal(15, 2)
+  XCSALPRES     Decimal?               @db.Decimal(15, 2)
+  XCFINPRES     DateTime?              @db.Date
+  XCCONPRES     String?                @db.VarChar(2)
+  XCINTPRES     Decimal?               @db.Decimal(5, 2)
+  XCFECINIAMORT DateTime?              @db.Date
+  XCCUOTAPRES   Decimal?               @db.Decimal(15, 2)
+  XCFECPRES01   DateTime?              @db.Date
+  XCCLPRES01    String?                @db.VarChar(2)
+  XCIMPPRES01   Decimal?               @db.Decimal(15, 2)
+  XCFECPRES02   DateTime?              @db.Date
+  XCCLPRES02    String?                @db.VarChar(2)
+  XCIMPPRES02   Decimal?               @db.Decimal(15, 2)
+  XCFECPRES03   DateTime?              @db.Date
+  XCCLPRES03    String?                @db.VarChar(2)
+  XCIMPPRES03   Decimal?               @db.Decimal(15, 2)
+  XCFECPRES04   DateTime?              @db.Date
+  XCCLPRES04    String?                @db.VarChar(2)
+  XCIMPPRES04   Decimal?               @db.Decimal(15, 2)
+  XCFECPRES05   DateTime?              @db.Date
+  XCCLPRES05    String?                @db.VarChar(2)
+  XCIMPPRES05   Decimal?               @db.Decimal(15, 2)
+  XCFECPRES06   DateTime?              @db.Date
+  XCCLPRES06    String?                @db.VarChar(2)
+  XCIMPPRES06   Decimal?               @db.Decimal(15, 2)
+  XCFECPRES07   DateTime?              @db.Date
+  XCCLPRES07    String?                @db.VarChar(2)
+  XCIMPPRES07   Decimal?               @db.Decimal(15, 2)
+  XCFECUSER     DateTime?              @db.DateTime(0)
+  XCUSER        String?                @db.VarChar(15)
+  XCTIPOREG     TXCAP0015_M_XCTIPOREG?
+  XCFECEVENTO   DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0016 {
+  XCNUMPER    String    @db.VarChar(10)
+  XCFECINI    DateTime  @db.Date
+  XCFECFIN    DateTime  @db.Date
+  XCCLADISTRI String?   @db.VarChar(2)
+  XCCECO      String?   @db.VarChar(20)
+  XCEMPRESA01 String?   @db.VarChar(6)
+  XCCECO01    String?   @db.VarChar(20)
+  XCORDEN01   String?   @db.VarChar(20)
+  XCPEP01     String?   @db.VarChar(20)
+  XCPORCEN01  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA02 String?   @db.VarChar(6)
+  XCCECO02    String?   @db.VarChar(20)
+  XCORDEN02   String?   @db.VarChar(20)
+  XCPEP02     String?   @db.VarChar(20)
+  XCPORCEN02  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA03 String?   @db.VarChar(6)
+  XCCECO03    String?   @db.VarChar(20)
+  XCORDEN03   String?   @db.VarChar(20)
+  XCPEP03     String?   @db.VarChar(20)
+  XCPORCEN03  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA04 String?   @db.VarChar(6)
+  XCCECO04    String?   @db.VarChar(20)
+  XCORDEN04   String?   @db.VarChar(20)
+  XCPEP04     String?   @db.VarChar(20)
+  XCPORCEN04  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA05 String?   @db.VarChar(6)
+  XCCECO05    String?   @db.VarChar(20)
+  XCORDEN05   String?   @db.VarChar(20)
+  XCPEP05     String?   @db.VarChar(20)
+  XCPORCEN05  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA06 String?   @db.VarChar(6)
+  XCCECO06    String?   @db.VarChar(20)
+  XCORDEN06   String?   @db.VarChar(20)
+  XCPEP06     String?   @db.VarChar(20)
+  XCPORCEN06  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA07 String?   @db.VarChar(6)
+  XCCECO07    String?   @db.VarChar(20)
+  XCORDEN07   String?   @db.VarChar(20)
+  XCPEP07     String?   @db.VarChar(20)
+  XCPORCEN07  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA08 String?   @db.VarChar(6)
+  XCCECO08    String?   @db.VarChar(20)
+  XCORDEN08   String?   @db.VarChar(20)
+  XCPEP08     String?   @db.VarChar(20)
+  XCPORCEN08  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA09 String?   @db.VarChar(6)
+  XCCECO09    String?   @db.VarChar(20)
+  XCORDEN09   String?   @db.VarChar(20)
+  XCPEP09     String?   @db.VarChar(20)
+  XCPORCEN09  Decimal?  @db.Decimal(5, 2)
+  XCEMPRESA10 String?   @db.VarChar(6)
+  XCCECO10    String?   @db.VarChar(20)
+  XCORDEN10   String?   @db.VarChar(20)
+  XCPEP10     String?   @db.VarChar(20)
+  XCPORCEN10  Decimal?  @db.Decimal(5, 2)
+  XCFECUSER   DateTime? @db.DateTime(0)
+  XCUSER      String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0016_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLADISTRI String?                @db.VarChar(2)
+  XCCECO      String?                @db.VarChar(20)
+  XCEMPRESA01 String?                @db.VarChar(6)
+  XCCECO01    String?                @db.VarChar(20)
+  XCORDEN01   String?                @db.VarChar(20)
+  XCPEP01     String?                @db.VarChar(20)
+  XCPORCEN01  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA02 String?                @db.VarChar(6)
+  XCCECO02    String?                @db.VarChar(20)
+  XCORDEN02   String?                @db.VarChar(20)
+  XCPEP02     String?                @db.VarChar(20)
+  XCPORCEN02  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA03 String?                @db.VarChar(6)
+  XCCECO03    String?                @db.VarChar(20)
+  XCORDEN03   String?                @db.VarChar(20)
+  XCPEP03     String?                @db.VarChar(20)
+  XCPORCEN03  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA04 String?                @db.VarChar(6)
+  XCCECO04    String?                @db.VarChar(20)
+  XCORDEN04   String?                @db.VarChar(20)
+  XCPEP04     String?                @db.VarChar(20)
+  XCPORCEN04  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA05 String?                @db.VarChar(6)
+  XCCECO05    String?                @db.VarChar(20)
+  XCORDEN05   String?                @db.VarChar(20)
+  XCPEP05     String?                @db.VarChar(20)
+  XCPORCEN05  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA06 String?                @db.VarChar(6)
+  XCCECO06    String?                @db.VarChar(20)
+  XCORDEN06   String?                @db.VarChar(20)
+  XCPEP06     String?                @db.VarChar(20)
+  XCPORCEN06  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA07 String?                @db.VarChar(6)
+  XCCECO07    String?                @db.VarChar(20)
+  XCORDEN07   String?                @db.VarChar(20)
+  XCPEP07     String?                @db.VarChar(20)
+  XCPORCEN07  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA08 String?                @db.VarChar(6)
+  XCCECO08    String?                @db.VarChar(20)
+  XCORDEN08   String?                @db.VarChar(20)
+  XCPEP08     String?                @db.VarChar(20)
+  XCPORCEN08  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA09 String?                @db.VarChar(6)
+  XCCECO09    String?                @db.VarChar(20)
+  XCORDEN09   String?                @db.VarChar(20)
+  XCPEP09     String?                @db.VarChar(20)
+  XCPORCEN09  Decimal?               @db.Decimal(5, 2)
+  XCEMPRESA10 String?                @db.VarChar(6)
+  XCCECO10    String?                @db.VarChar(20)
+  XCORDEN10   String?                @db.VarChar(20)
+  XCPEP10     String?                @db.VarChar(20)
+  XCPORCEN10  Decimal?               @db.Decimal(5, 2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0016_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+}
+
+model TXCAP0017 {
+  XCNUMPER    String    @db.VarChar(10)
+  XCFECINI    DateTime  @db.Date
+  XCFECFIN    DateTime  @db.Date
+  XCFECRETROA DateTime  @db.Date
+  XCLIQHAS    String?   @db.VarChar(2)
+  XCFECHA     DateTime? @db.Date
+  XCFECUSER   DateTime? @db.DateTime(0)
+  XCUSER      String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0017_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCFECRETROA DateTime?              @db.Date
+  XCLIQHAS    String?                @db.VarChar(2)
+  XCFECHA     DateTime?              @db.Date
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0017_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0018 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCTIPSIS  String?   @db.VarChar(2)
+  XCINSTI   String?   @db.VarChar(10)
+  XCCUSPP   String?   @db.VarChar(15)
+  XCTIPCOM  String?   @db.VarChar(2)
+  XCTIPPEN  String?   @db.VarChar(2)
+  XCFECINCR DateTime? @db.Date
+  XCJUBIL   String?   @db.VarChar(1)
+  XCCONVE   String?   @db.VarChar(2)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0018_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCTIPSIS    String?                @db.VarChar(2)
+  XCINSTI     String?                @db.VarChar(10)
+  XCCUSPP     String?                @db.VarChar(15)
+  XCTIPCOM    String?                @db.VarChar(2)
+  XCTIPPEN    String?                @db.VarChar(2)
+  XCFECINCR   DateTime?              @db.Date
+  XCJUBIL     String?                @db.VarChar(1)
+  XCCONVE     String?                @db.VarChar(2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0018_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_numper")
+}
+
+model TXCAP0019 {
+  XCNUMPER     String    @db.VarChar(10)
+  XCFECINI     DateTime  @db.Date
+  XCFECFIN     DateTime  @db.Date
+  XCCLASEEPS   String?   @db.VarChar(2)
+  XCPLANEPS    String?   @db.VarChar(10)
+  XCOPCIONEPS  String?   @db.VarChar(2)
+  XCCOBDE      DateTime? @db.Date
+  XCCOSTO      Decimal?  @db.Decimal(12, 2)
+  XCCREDITOEPS Decimal?  @db.Decimal(12, 2)
+  XCFECUSER    DateTime? @db.DateTime(0)
+  XCUSER       String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0019_M {
+  ID_EVENTO    BigInt                 @id @default(autoincrement())
+  XCNUMPER     String?                @db.VarChar(10)
+  XCFECINI     DateTime?              @db.Date
+  XCFECFIN     DateTime?              @db.Date
+  XCCLASEEPS   String?                @db.VarChar(2)
+  XCPLANEPS    String?                @db.VarChar(10)
+  XCOPCIONEPS  String?                @db.VarChar(2)
+  XCCOBDE      DateTime?              @db.Date
+  XCCOSTO      Decimal?               @db.Decimal(12, 2)
+  XCCREDITOEPS Decimal?               @db.Decimal(12, 2)
+  XCFECUSER    DateTime?              @db.DateTime(0)
+  XCUSER       String?                @db.VarChar(15)
+  XCTIPOREG    TXCAP0019_M_XCTIPOREG?
+  XCFECEVENTO  DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_eps_numper")
+}
+
+model TXCAP0020 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCNUMESSA  String?   @db.VarChar(15)
+  XCESTAFILI String?   @db.VarChar(2)
+  XCESSAVID  String?   @db.VarChar(20)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0020_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCNUMESSA   String?                @db.VarChar(15)
+  XCESTAFILI  String?                @db.VarChar(2)
+  XCESSAVID   String?                @db.VarChar(20)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0020_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0021 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCCLSCTR   String?   @db.VarChar(2)
+  XCTPRIESGO String?   @db.VarChar(2)
+  XCASEGUR   String?   @db.VarChar(10)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0021_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLSCTR    String?                @db.VarChar(2)
+  XCTPRIESGO  String?                @db.VarChar(2)
+  XCASEGUR    String?                @db.VarChar(10)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0021_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0022 {
+  XCNUMPER      String    @db.VarChar(10)
+  XCFECINI      DateTime  @db.Date
+  XCFECFIN      DateTime  @db.Date
+  XCCLVLEY      String?   @db.VarChar(4)
+  XCTIPRIESGOVD String?   @db.VarChar(2)
+  XCASEGUR      String?   @db.VarChar(6)
+  XCFECUSER     DateTime? @db.DateTime(0)
+  XCUSER        String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0022_M {
+  ID_EVENTO     BigInt                 @id @default(autoincrement())
+  XCNUMPER      String?                @db.VarChar(10)
+  XCFECINI      DateTime?              @db.Date
+  XCFECFIN      DateTime?              @db.Date
+  XCCLVLEY      String?                @db.VarChar(4)
+  XCTIPRIESGOVD String?                @db.VarChar(2)
+  XCASEGUR      String?                @db.VarChar(6)
+  XCFECUSER     DateTime?              @db.DateTime(0)
+  XCUSER        String?                @db.VarChar(15)
+  XCTIPOREG     TXCAP0022_M_XCTIPOREG?
+  XCFECEVENTO   DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0023 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCCLIMPTO  String?   @db.VarChar(4)
+  XCTIPIMPTO String?   @db.VarChar(2)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0023_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLIMPTO   String?                @db.VarChar(4)
+  XCTIPIMPTO  String?                @db.VarChar(2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0023_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0024 {
+  XCNUMPER       String    @db.VarChar(10)
+  XCFECINI       DateTime  @db.Date
+  XCFECFIN       DateTime  @db.Date
+  XCRUC          String?   @db.VarChar(11)
+  XCRAZONSOC     String?   @db.VarChar(150)
+  XCINGEMPLEADOR Decimal?  @db.Decimal(15, 2)
+  XCDESEMPLEADOR Decimal?  @db.Decimal(15, 2)
+  XCOTRIMPUES    Decimal?  @db.Decimal(15, 2)
+  XCDONAC        Decimal?  @db.Decimal(15, 2)
+  XCFECUSER      DateTime? @db.DateTime(0)
+  XCUSER         String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0024_M {
+  ID_EVENTO      BigInt                 @id @default(autoincrement())
+  XCNUMPER       String?                @db.VarChar(10)
+  XCFECINI       DateTime?              @db.Date
+  XCFECFIN       DateTime?              @db.Date
+  XCRUC          String?                @db.VarChar(11)
+  XCRAZONSOC     String?                @db.VarChar(150)
+  XCINGEMPLEADOR Decimal?               @db.Decimal(15, 2)
+  XCDESEMPLEADOR Decimal?               @db.Decimal(15, 2)
+  XCOTRIMPUES    Decimal?               @db.Decimal(15, 2)
+  XCDONAC        Decimal?               @db.Decimal(15, 2)
+  XCFECUSER      DateTime?              @db.DateTime(0)
+  XCUSER         String?                @db.VarChar(15)
+  XCTIPOREG      TXCAP0024_M_XCTIPOREG?
+  XCFECEVENTO    DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0025 {
+  XCNUMPER    String    @db.VarChar(10)
+  XCFECINI    DateTime  @db.Date
+  XCFECFIN    DateTime  @db.Date
+  XCACREE     String?   @db.VarChar(2)
+  XCNUMACREE  String?   @db.VarChar(20)
+  XCCLARETENC String?   @db.VarChar(2)
+  XCCORRE     String?   @db.VarChar(20)
+  XCRECEP     String?   @db.VarChar(60)
+  XCDIRCO     String?   @db.VarChar(120)
+  XCREGIO     String?   @db.VarChar(6)
+  XCPAIS      String?   @db.VarChar(3)
+  XCBANCO     String?   @db.VarChar(6)
+  XCNUMCTA    String?   @db.VarChar(30)
+  XCNUMCTAINT String?   @db.VarChar(34)
+  XCVIAPAGO   String?   @db.VarChar(2)
+  XCTEXL      String?   @db.VarChar(200)
+  XCNOMJUZ    String?   @db.VarChar(100)
+  XCNUMJUZ    String?   @db.VarChar(20)
+  XCDIRJUZ    String?   @db.VarChar(120)
+  XCRESJUZ    String?   @db.VarChar(60)
+  XCNUMEXP    String?   @db.VarChar(30)
+  XCNUMOFIC   String?   @db.VarChar(30)
+  XCFECOFI    DateTime? @db.Date
+  XCNUMROL    String?   @db.VarChar(20)
+  XCSALRT     Decimal?  @db.Decimal(15, 2)
+  XCFECUSER   DateTime? @db.DateTime(0)
+  XCUSER      String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0025_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCACREE     String?                @db.VarChar(2)
+  XCNUMACREE  String?                @db.VarChar(20)
+  XCCLARETENC String?                @db.VarChar(2)
+  XCCORRE     String?                @db.VarChar(20)
+  XCRECEP     String?                @db.VarChar(60)
+  XCDIRCO     String?                @db.VarChar(120)
+  XCREGIO     String?                @db.VarChar(6)
+  XCPAIS      String?                @db.VarChar(3)
+  XCBANCO     String?                @db.VarChar(6)
+  XCNUMCTA    String?                @db.VarChar(30)
+  XCNUMCTAINT String?                @db.VarChar(34)
+  XCVIAPAGO   String?                @db.VarChar(2)
+  XCTEXL      String?                @db.VarChar(200)
+  XCNOMJUZ    String?                @db.VarChar(100)
+  XCNUMJUZ    String?                @db.VarChar(20)
+  XCDIRJUZ    String?                @db.VarChar(120)
+  XCRESJUZ    String?                @db.VarChar(60)
+  XCNUMEXP    String?                @db.VarChar(30)
+  XCNUMOFIC   String?                @db.VarChar(30)
+  XCFECOFI    DateTime?              @db.Date
+  XCNUMROL    String?                @db.VarChar(20)
+  XCSALRT     Decimal?               @db.Decimal(15, 2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0025_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0026 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCCLRETEN String?   @db.VarChar(2)
+  XCACREE   String?   @db.VarChar(10)
+  XCTIPNOM  String?   @db.VarChar(2)
+  XCBASCALC Decimal?  @db.Decimal(15, 2)
+  XCPORCERJ Decimal?  @db.Decimal(5, 2)
+  XCIMPORRJ Decimal?  @db.Decimal(15, 2)
+  XCMONED   String?   @db.VarChar(3)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0026_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLRETEN   String?                @db.VarChar(2)
+  XCACREE     String?                @db.VarChar(10)
+  XCTIPNOM    String?                @db.VarChar(2)
+  XCBASCALC   Decimal?               @db.Decimal(15, 2)
+  XCPORCERJ   Decimal?               @db.Decimal(5, 2)
+  XCIMPORRJ   Decimal?               @db.Decimal(15, 2)
+  XCMONED     String?                @db.VarChar(3)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0026_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0027 {
+  XCNUMPER    String    @db.VarChar(10)
+  XCFECINI    DateTime  @db.Date
+  XCFECFIN    DateTime  @db.Date
+  XCHORMARC   String?   @db.VarChar(10)
+  XCTIPMARC   String?   @db.VarChar(2)
+  XCRELMARC   String?   @db.VarChar(2)
+  XCORIMARC   String?   @db.VarChar(2)
+  XCTEXTOMARC String?   @db.VarChar(100)
+  XCFECUSER   DateTime? @db.DateTime(0)
+  XCUSER      String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0027_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCHORMARC   String?                @db.VarChar(10)
+  XCTIPMARC   String?                @db.VarChar(2)
+  XCRELMARC   String?                @db.VarChar(2)
+  XCORIMARC   String?                @db.VarChar(2)
+  XCTEXTOMARC String?                @db.VarChar(100)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0027_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0028 {
+  XCNUMPER     String    @db.VarChar(10)
+  XCFECINI     DateTime  @db.Date
+  XCFECFIN     DateTime  @db.Date
+  XCCLAUSENCIA String?   @db.VarChar(4)
+  XCHORINIAUS  Decimal?  @db.Decimal(10, 2)
+  XCHORFINAUS  Decimal?  @db.Decimal(10, 2)
+  XCDCALAUS    Decimal?  @db.Decimal(10, 2)
+  XCDHABAUS    Decimal?  @db.Decimal(10, 2)
+  XCHORAUS     Decimal?  @db.Decimal(10, 2)
+  XCFECUSER    DateTime? @db.DateTime(0)
+  XCUSER       String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0028_M {
+  ID_EVENTO    BigInt                 @id @default(autoincrement())
+  XCNUMPER     String?                @db.VarChar(10)
+  XCFECINI     DateTime?              @db.Date
+  XCFECFIN     DateTime?              @db.Date
+  XCCLAUSENCIA String?                @db.VarChar(4)
+  XCHORINIAUS  Decimal?               @db.Decimal(10, 2)
+  XCHORFINAUS  Decimal?               @db.Decimal(10, 2)
+  XCDCALAUS    Decimal?               @db.Decimal(10, 2)
+  XCDHABAUS    Decimal?               @db.Decimal(10, 2)
+  XCHORAUS     Decimal?               @db.Decimal(10, 2)
+  XCFECUSER    DateTime?              @db.DateTime(0)
+  XCUSER       String?                @db.VarChar(15)
+  XCTIPOREG    TXCAP0028_M_XCTIPOREG?
+  XCFECEVENTO  DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0029 {
+  XCNUMPER    String    @db.VarChar(10)
+  XCFECINI    DateTime  @db.Date
+  XCFECFIN    DateTime  @db.Date
+  XCCLPRESENC String?   @db.VarChar(4)
+  XCHORINIAPR Decimal?  @db.Decimal(6, 2)
+  XCHORFINAPR Decimal?  @db.Decimal(6, 2)
+  XCDCALAPR   Decimal?  @db.Decimal(6, 2)
+  XCDHABAPR   Decimal?  @db.Decimal(6, 2)
+  XCHORAPR    Decimal?  @db.Decimal(6, 2)
+  XCFECUSER   DateTime? @db.DateTime(0)
+  XCUSER      String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0029_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLPRESENC String?                @db.VarChar(4)
+  XCHORINIAPR Decimal?               @db.Decimal(6, 2)
+  XCHORFINAPR Decimal?               @db.Decimal(6, 2)
+  XCDCALAPR   Decimal?               @db.Decimal(6, 2)
+  XCDHABAPR   Decimal?               @db.Decimal(6, 2)
+  XCHORAPR    Decimal?               @db.Decimal(6, 2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0029_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0030 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCCLTIEMPO String?   @db.VarChar(4)
+  XCCTTIEMPO String?   @db.VarChar(10)
+  XCUNIDATPO String?   @db.VarChar(3)
+  XCTIPNOM   String?   @db.VarChar(2)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0030_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLTIEMPO  String?                @db.VarChar(4)
+  XCCTTIEMPO  String?                @db.VarChar(10)
+  XCUNIDATPO  String?                @db.VarChar(3)
+  XCTIPNOM    String?                @db.VarChar(2)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0030_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0031 {
+  XCNUMPER       String    @db.VarChar(10)
+  XCFECINI       DateTime  @db.Date
+  XCFECFIN       DateTime  @db.Date
+  XCCCUOTA       String?   @db.VarChar(4)
+  XCFECINICUOTA  DateTime? @db.Date
+  XCFECFINCUOTA  DateTime? @db.Date
+  XCCTTIEMPO     String?   @db.VarChar(4)
+  XCUNIDATPO     String?   @db.VarChar(2)
+  XCHORINIACUOTA DateTime? @db.Time(0)
+  XCHORFINACUOTA DateTime? @db.Time(0)
+  XCSALDOCUOTA   Decimal?  @db.Decimal(15, 2)
+  XCFECUSER      DateTime? @db.DateTime(0)
+  XCUSER         String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0031_M {
+  ID_EVENTO      BigInt                 @id @default(autoincrement())
+  XCNUMPER       String?                @db.VarChar(10)
+  XCFECINI       DateTime?              @db.Date
+  XCFECFIN       DateTime?              @db.Date
+  XCCCUOTA       String?                @db.VarChar(4)
+  XCFECINICUOTA  DateTime?              @db.Date
+  XCFECFINCUOTA  DateTime?              @db.Date
+  XCCTTIEMPO     String?                @db.VarChar(4)
+  XCUNIDATPO     String?                @db.VarChar(2)
+  XCHORINIACUOTA DateTime?              @db.Time(0)
+  XCHORFINACUOTA DateTime?              @db.Time(0)
+  XCSALDOCUOTA   Decimal?               @db.Decimal(15, 2)
+  XCFECUSER      DateTime?              @db.DateTime(0)
+  XCUSER         String?                @db.VarChar(15)
+  XCTIPOREG      TXCAP0031_M_XCTIPOREG?
+  XCFECEVENTO    DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0032 {
+  XCNUMPER   String    @db.VarChar(10)
+  XCFECINI   DateTime  @db.Date
+  XCFECFIN   DateTime  @db.Date
+  XCCLCOMP   String?   @db.VarChar(4)
+  XCCTTIEMPO String?   @db.VarChar(4)
+  XCFECUSER  DateTime? @db.DateTime(0)
+  XCUSER     String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0032_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCCLCOMP    String?                @db.VarChar(4)
+  XCCTTIEMPO  String?                @db.VarChar(4)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0032_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+
+  @@index([XCNUMPER], map: "idx_xcnumper")
+}
+
+model TXCAP0033 {
+  XCNUMPER  String    @db.VarChar(10)
+  XCFECINI  DateTime  @db.Date
+  XCFECFIN  DateTime  @db.Date
+  XCIDTARJ  String?   @db.VarChar(20)
+  XCFECUSER DateTime? @db.DateTime(0)
+  XCUSER    String?   @db.VarChar(15)
+
+  @@id([XCNUMPER, XCFECINI])
+}
+
+model TXCAP0033_M {
+  ID_EVENTO   BigInt                 @id @default(autoincrement())
+  XCNUMPER    String?                @db.VarChar(10)
+  XCFECINI    DateTime?              @db.Date
+  XCFECFIN    DateTime?              @db.Date
+  XCIDTARJ    String?                @db.VarChar(20)
+  XCFECUSER   DateTime?              @db.DateTime(0)
+  XCUSER      String?                @db.VarChar(15)
+  XCTIPOREG   TXCAP0033_M_XCTIPOREG?
+  XCFECEVENTO DateTime?              @default(now()) @db.DateTime(0)
+}
+
+model TXCLD0001 {
+  codigo      String   @id @db.VarChar(4)
+  cod_motivo  String   @db.VarChar(2)
+  descripcion String   @db.VarChar(60)
+  activo      Boolean? @default(true)
+}
+
+model TXCLD0002 {
+  codigo        String   @id @db.VarChar(4)
+  cod_submotivo String   @db.VarChar(4)
+  descripcion   String   @db.VarChar(60)
+  activo        Boolean? @default(true)
+}
+
+model XCCECO {
+  XCCECO      String @id @db.VarChar(20)
+  DESCRIPCION String @db.VarChar(60)
+}
+
+model XCESTADO {
+  codigo      String @id @db.Char(1)
+  descripcion String @db.VarChar(30)
+}
+
+model XCMOTMOV {
+  codigo         String   @id @db.VarChar(2)
+  cod_movimiento String   @db.VarChar(2)
+  descripcion    String   @db.VarChar(50)
+  activo         Boolean? @default(true)
+}
+
+model XCMOVPER {
+  codigo      String   @id @db.VarChar(2)
+  descripcion String   @db.VarChar(20)
+  activo      Boolean? @default(true)
+}
+
+model XCSUBMOT {
+  codigo      String   @id @db.VarChar(2)
+  cod_motivo  String   @db.VarChar(2)
+  descripcion String   @db.VarChar(50)
+  activo      Boolean? @default(true)
+}
+
+enum TXCAP0033_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0032_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0013_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0023_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0020_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0022_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0017_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0021_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0012_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0001_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0030_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0027_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0019_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0014_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0029_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0024_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0028_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0009_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0026_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0010_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0011_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0006_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0031_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0018_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0007_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0003_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0004_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0002_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0005_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0025_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0015_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0008_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
+
+enum TXCAP0016_M_XCTIPOREG {
+  INSERT
+  UPDATE
+  DELETE
+}
