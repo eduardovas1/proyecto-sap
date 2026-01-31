@@ -1489,6 +1489,28 @@ model XCSUBMOT {
   activo      Boolean? @default(true)
 }
 
+model AppUser {
+  id            String            @id @default(cuid())
+  email         String            @unique
+  passwordHash  String
+  role          Role              @default(EMPLOYEE)
+  isActive      Boolean           @default(true)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  refreshTokens AppRefreshToken[]
+}
+
+model AppRefreshToken {
+  id        String   @id @default(cuid())
+  tokenHash String
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      AppUser  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
 enum TXCAP0033_M_XCTIPOREG {
   INSERT
   UPDATE
@@ -1685,4 +1707,9 @@ enum TXCAP0016_M_XCTIPOREG {
   INSERT
   UPDATE
   DELETE
+}
+
+enum Role {
+  ADMIN
+  EMPLOYEE
 }

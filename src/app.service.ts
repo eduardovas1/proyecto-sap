@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from './prisma/prisma.service';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Mundo SAP';
+  constructor(private prisma: PrismaService) {}
+
+  async testDb() {
+    return this.prisma.tXCAP0001.findMany({ take: 5 });
   }
 }
